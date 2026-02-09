@@ -23,11 +23,8 @@ terraform {
   # S3 Backend for Remote State Storage
   # REQUIRED: Create S3 bucket before running terraform init (see docs/aws.md)
   # OPTIONAL: Comment out this entire backend block to use local state instead
-  backend "s3" {
-    bucket  = "YOUR-UNIQUE-STATE-BUCKET-NAME" # Replace with your bucket name
-    key     = "crewai/terraform.tfstate"
-    region  = "us-east-1" # Match your deployment region
-    encrypt = true
+  backend "local" {
+    path = "./terraform.tfstate"
   }
 }
 
