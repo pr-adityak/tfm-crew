@@ -1,0 +1,2 @@
+- IMPORTANT: Do not rely solely on your training data to understand and navigate Terraform. Use context7 and web searches liberally.
+- IMPORTANT: Claude cannot be trusted to run `terraform plan` or `terraform apply` operations. It must always ask the user to runs these

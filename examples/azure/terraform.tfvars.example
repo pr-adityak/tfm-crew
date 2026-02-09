@@ -1,0 +1,64 @@
+# ============================================================================
+# REQUIRED VARIABLES
+# ============================================================================
+
+# Resource Group (will be created if it doesn't exist)
+resource_group_name = "crewai-rg"
+
+# Azure Region
+location = "eastus2"
+
+# PostgreSQL Server Name (must be globally unique)
+db_server_name = "crewai-postgres-prod"
+
+# Storage Account Names (must be globally unique, lowercase alphanumeric, 3-24 chars)
+# A random suffix will be appended to ensure uniqueness
+data_storage_account_name = "crewaidata"
+logs_storage_account_name = "crewailogs"
+
+# ============================================================================
+# AKS API SERVER ACCESS
+# ============================================================================
+
+# Authorized IP ranges for AKS API server access (CIDR notation)
+# Note: Terraform runner IP is automatically added
+# Get your IP: curl https://checkip.amazonaws.com
+authorized_ip_ranges = [
+  # "203.0.113.25/32"  # Your laptop IP
+]
+
+# ============================================================================
+# OPTIONAL OVERRIDES
+# ============================================================================
+
+# VNet Configuration
+# vnet_name = "crewai-vnet"
+# vnet_address_space = ["10.0.0.0/16"]
+
+# AKS Configuration
+# cluster_name = "crewai-aks"
+# kubernetes_version = "1.33"
+
+# Database Configuration
+# db_administrator_login = "crewai_admin"
+# db_name = "crewai"
+# db_reader_instance_count = 1
+
+# Registry Configuration
+# acr_name = "crewai"
+
+# Key Vault Configuration
+# key_vault_name = "crewai-kv"
+
+# Application Gateway Configuration
+# application_gateway_name = "crewai-appgw"
+
+# Platform Configuration
+# platform_namespace = "platform"
+
+# Tags
+# tags = {
+#   Project     = "CrewAI"
+#   ManagedBy   = "Terraform"
+#   Environment = "production"
+# }

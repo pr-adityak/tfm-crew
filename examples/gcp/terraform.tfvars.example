@@ -1,0 +1,57 @@
+# Example Terraform Variables for CrewAI Infrastructure on GCP
+# Copy this file to terraform.tfvars and update with your values
+
+# ========================================
+# REQUIRED: GCP Project Configuration
+# ========================================
+
+project_id = "my-gcp-project-id"
+region     = "us-central1"
+
+# ========================================
+# REQUIRED: GCS Bucket Names (must be globally unique)
+# ========================================
+
+gcs_data_bucket_name = "crewai-data-bucket-unique"
+gcs_logs_bucket_name = "crewai-logs-bucket-unique"
+
+# ========================================
+
+# ========================================
+# OPTIONAL: Network Configuration (defaults shown)
+# ========================================
+
+# vpc_cidr   = "10.0.0.0/16"  # VPC CIDR block (provides 65,536 IPs)
+# zone_count = 3               # Deploy across 3 zones for HA
+
+# ========================================
+# OPTIONAL: Cluster Configuration (defaults shown)
+# ========================================
+
+# cluster_name       = "crewai-cluster"
+# kubernetes_version = "1.31"
+
+# ========================================
+# OPTIONAL: Cluster API Endpoint Access
+# Allows kubectl access from specific IPs
+# ========================================
+
+# By default, cluster API is private-only (accessible from within VPC)
+# Uncomment and add your IP to enable kubectl access from your laptop
+# To get your current IP: curl https://checkip.amazonaws.com
+
+# cluster_authorized_networks = [
+#   "203.0.113.25/32",      # Your laptop IP
+#   "198.51.100.0/24"       # Office network range
+# ]
+
+# ========================================
+# OPTIONAL: Database Configuration (defaults shown)
+# ========================================
+
+# db_instance_name      = "crewai-db"
+# db_instance_tier      = "db-custom-2-7680"  # 2 vCPU, 7.5GB RAM (custom tier required for PostgreSQL)
+# reader_instance_count = 1
+
+# Read replica zone placement (optional - GCP auto-selects if empty)
+# replica_zones = ["europe-north1-b"]

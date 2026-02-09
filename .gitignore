@@ -1,0 +1,84 @@
+# Terraform - Local directories
+.terraform/
+
+# Terraform - Lock file (keep this for version consistency)
+# .terraform.lock.hcl
+
+# Terraform - State files
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+terraform.tfstate.d/
+
+# Terraform - Plan files
+*.tfplan
+*.plan
+plan.out
+
+# Terraform - Log files
+*.log
+terraform.log
+crash.log
+crash.*.log
+
+# Terraform - Variable files with sensitive data
+*.tfvars
+*.tfvars.json
+!terraform.tfvars.example
+
+# Terraform - Override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform - CLI configuration
+.terraformrc
+terraform.rc
+
+# MacOS
+.DS_Store
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# SSH Keys
+*.pem
+*.key
+*.pub
+
+# Environment variables
+.env
+.env.local
+
+# Python (for any helper scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+ENV/
+
+# Backup files
+backup/
+backups/
+*.backup
+
+# Sensitive configuration
+secrets.yaml
+secrets.yml
+credentials.json
+
+# Preflight generated files
+**/preflights/preflight.yaml
+**/preflights/preflightbundle-*.tar.gz
+**/preflights/*-results-*.txt

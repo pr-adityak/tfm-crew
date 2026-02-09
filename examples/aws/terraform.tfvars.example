@@ -1,0 +1,61 @@
+# Example Terraform Variables for CrewAI Infrastructure
+# Copy this file to terraform.tfvars and update with your values
+
+# Basic Configuration
+region      = "us-east-1"
+environment = "development"
+
+# S3 Bucket Names (must be globally unique)
+s3_data_bucket_name = "crewai-data-bucket"
+s3_logs_bucket_name = "crewai-logs-bucket"
+
+# Networking Configuration (Optional - defaults shown)
+vpc_cidr                = "10.0.0.0/16"  # VPC CIDR block (provides 65,536 IPs)
+availability_zone_count = 2               # Number of AZs (minimum 2 for HA)
+
+# Cluster Configuration (Optional - defaults shown)
+# cluster_name       = "crewai-cluster"     # EKS cluster name
+kubernetes_version = "1.32"                 # Kubernetes version (can be updated as new versions release)
+# workload_namespace       = "crewai-platform"    # Kubernetes namespace for workloads
+# workload_service_account = "crewai-platform-sa" # Kubernetes service account name
+
+# Cluster access required for IAC user to install AWS ALB Controller via Helm
+# Admin Access (Optional - grant specific IAM users/roles cluster admin access)
+# admin_iam_principals = [
+#   "arn:aws:iam::123456789012:user/your-username",
+#   "arn:aws:iam::123456789012:role/your-role-name"
+# ]
+
+# EKS Cluster API Endpoint Access (Optional - allows kubectl access from specific IPs)
+# By default, cluster API is private-only (accessible from within VPC)
+# Uncomment and add your IP to enable kubectl access from your laptop
+# To get your current IP: curl https://checkip.amazonaws.com
+# cluster_endpoint_public_access_cidrs = [
+#   "203.0.113.25/32",      # Your laptop IP
+#   "198.51.100.0/24"       # Office network range
+# ]
+
+# ========================================
+# EXISTING VPC CONFIGURATION (Optional)
+# Uncomment to deploy into an existing VPC instead of creating a new one
+# ========================================
+#
+# Requirements for existing VPC:
+# - VPC must have DNS hostnames and DNS support enabled
+# - Private subnets must span at least 2 Availability Zones
+# - Private subnets should have tag "kubernetes.io/role/internal-elb" = "1" for internal ALBs
+# - Public subnets (if provided) should have tag "kubernetes.io/role/elb" = "1" for internet-facing ALBs
+# - NAT Gateways or equivalent egress path must exist for private subnets
+# - Sufficient IP space in private subnets for EKS nodes and pods
+#
+# use_existing_vpc = true
+# existing_vpc_id  = "vpc-0123456789abcdef0"
+# existing_private_subnet_ids = [
+#   "subnet-0123456789abcdef0",  # Private subnet in AZ-a
+#   "subnet-0123456789abcdef1"   # Private subnet in AZ-b
+# ]
+# existing_public_subnet_ids = [
+#   "subnet-0123456789abcdef2",  # Public subnet in AZ-a (for internet-facing ALBs)
+#   "subnet-0123456789abcdef3"   # Public subnet in AZ-b
+# ]
+# create_vpc_endpoints = true  # Set to false if VPC endpoints already exist
